@@ -6,11 +6,13 @@
     <title>Para Ti | Feliz Cumpleaños</title>
     <link rel="stylesheet" href="main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/ca12345678.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
+    <!-- BARRA DE NAVEGACIÓN LIMPIA Y ESTÍTICA -->
     <header class="navbar">
         <div class="logo">Para ti ♡</div>
         <nav>
@@ -21,36 +23,213 @@
         </nav>
     </header>
 
+    <!-- SECCIÓN INICIO / HERO -->
     <section id="inicio" class="hero-premium">
-        <div class="hero-text-container">
-            <h1>Feliz Cumpleaños</h1>
-            <p>Mi Personita Favorita ♡</p>
-        </div>
-    </section>
-
-    <section id="recuerdos" class="galeria-premium">
-        <div class="carrusel-container">
-            <button class="carrusel-btn" id="btnIzq"><i class="fas fa-chevron-left"></i></button>
-            <div class="carrusel-track-container">
-                <div class="carrusel-track" id="carruselTrack">
-                    <div class="carrusel-item"><img src="img/muba selfi2.jpeg" alt="Foto"></div>
-                    <div class="carrusel-item"><img src="img/muba selfi5.jpeg" alt="Foto"></div>
-                    <div class="carrusel-item"><img src="img/muba selfi3.jpeg" alt="Foto"></div>
+        <div class="hero-overlay">
+            <div class="hero-text-container">
+                <h1 class="script-title">Feliz Cumpleaños</h1>
+                <h2 class="main-subtitle">Mi Personita Favorita ♡</h2>
+                <div class="divider-hearts">
+                    <span class="line"></span>
+                    <i class="fas fa-heart"></i>
+                    <span class="line"></span>
+                </div>
+                <p class="hero-phrase">Gracias por existir y por hacer nuestro mundo tan bonito con tu presencia. 💓</p>
+                
+                <div class="arrow-down" onclick="document.getElementById('sobre-ti').scrollIntoView({behavior:'smooth'})">
+                    <i class="fas fa-chevron-down"></i>
                 </div>
             </div>
-            <button class="carrusel-btn" id="btnDer"><i class="fas fa-chevron-right"></i></button>
         </div>
     </section>
 
-    <div class="music-player-premium">
-        <button id="btnPlayPause"><i class="fas fa-play" id="icon-play"></i></button>
-        <div id="progressContainer"><div id="progressBar"></div></div>
+    <!-- SECCIÓN SOBRE TI -->
+    <section id="sobre-ti" class="sobre-ti">
+        <h2 class="section-title-script">Sobre ti ✨</h2>
+        <div class="grid-cualidades">
+            <div class="cualidad-card">
+                <i class="fas fa-heart icon-pink"></i>
+                <h3>Eres increíble</h3>
+                <p>Tu forma de ver la vida inspira a todos.</p>
+            </div>
+            <div class="cualidad-card">
+                <i class="fas fa-star icon-pink"></i>
+                <h3>Eres única</h3>
+                <p>No hay nadie como tú, y eso es lo que te hace especial.</p>
+            </div>
+            <div class="cualidad-card">
+                <i class="fas fa-sun icon-pink"></i>
+                <h3>Eres luz</h3>
+                <p>Iluminas cualquier lugar con tu sonrisa.</p>
+            </div>
+            <div class="cualidad-card">
+                <i class="fas fa-camera icon-pink"></i>
+                <h3>Eres recuerdos</h3>
+                <p>Cada momento contigo se queda grabado en nuestro corazón.</p>
+            </div>
+            <div class="cualidad-card">
+                <i class="fas fa-hand-holding-heart icon-pink"></i>
+                <h3>Eres amor</h3>
+                <p>Tu corazón es puro por dentro y por fuera.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN UNIFICADA DEL CONTADOR CON COLLAGE -->
+    <section id="contador-seccion" class="contador-container">
+        <div class="contador-grid-layout">
+            
+            <div class="collage-flotante left-collage">
+                <div class="polaroid-mini rot-left">
+                    <img src="img/muba ayack y yo.jpeg" alt="Momentos">
+                </div>
+                <div class="polaroid-mini rot-right frame-hide">
+                    <img src="img/muba y yo.jpeg" alt="Juntos">
+                </div>
+            </div>
+
+            <div class="contador-wrapper">
+                <p class="contador-tag">Contando los segundos para celebrar a alguien tan especial... ✨</p>
+                <div class="countdown">
+                    <div class="time-box">
+                        <span id="dias">00</span>
+                        <label>DÍAS</label>
+                    </div>
+                    <div class="time-box">
+                        <span id="horas">00</span>
+                        <label>HORAS</label>
+                    </div>
+                    <div class="time-box">
+                        <span id="minutos">00</span>
+                        <label>MINUTOS</label>
+                    </div>
+                    <div class="time-box">
+                        <span id="segundos">00</span>
+                        <label>SEGUNDOS</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="collage-flotante right-collage">
+                <div class="polaroid-mini rot-right">
+                    <img src="img/muba selfi 4.jpeg" alt="Sonrisa">
+                </div>
+                <div class="polaroid-mini rot-left">
+                    <img src="img/muba selfi1.jpeg" alt="Casual">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECCIÓN RECUERDOS (CARRUSEL) -->
+    <section id="recuerdos" class="galeria-premium">
+        <div class="luces-container">
+            <div class="wire"></div>
+            <ul class="luces">
+                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+            </ul>
+        </div>
+
+        <h2 class="section-title-script text-dark-section">Recuerdos Inolvidables 📸</h2>
+        <p class="galeria-subtitle">Momentos hermosos que guardo con un cariño infinito en mi corazón 💕</p>
+        
+        <div class="carrusel-container">
+            <button class="carrusel-btn btn-izq" id="btnIzq"><i class="fas fa-chevron-left"></i></button>
+            
+            <div class="carrusel-track-container">
+                <div class="carrusel-track" id="carruselTrack">
+                    
+                    <div class="carrusel-item">
+                        <img src="img/muba selfi2.jpeg" alt="Outfit Balcón">
+                        <div class="item-desc">✨ Sofisticación y elegancia pura</div>
+                    </div>
+
+                    <div class="carrusel-item">
+                        <img src="img/muba selfi5.jpeg" alt="Vestido Elegante">
+                        <div class="item-desc">📸 Cada selfie tiene su magia</div>
+                    </div>
+
+                    <div class="carrusel-item">
+                        <img src="img/muba selfi3.jpeg" alt="Outfit Balcón Frente">
+                        <div class="item-desc">🌿 Brillando con tu propia luz siempre</div>
+                    </div>
+
+                    <div class="carrusel-item">
+                        <img src="img/muba infancia.jpeg" alt="Mini Muba">
+                        <div class="item-desc">🍼 La misma ternura desde pequeña</div>
+                    </div>
+
+                    <div class="carrusel-item">
+                        <img src="img/muba selfi6.jpeg" alt="Estilo">
+                        <div class="item-desc">👑 Una reina total</div>
+                    </div>
+
+                    <div class="carrusel-item">
+                        <img src="img/muba selfi 4.jpeg" alt="Sonrisa">
+                        <div class="item-desc">💖 Tu sonrisa ilumina todo</div>
+                    </div>
+
+                </div>
+            </div>
+            
+            <button class="carrusel-btn btn-der" id="btnDer"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </section>
+
+    <!-- SECCIÓN CARTAS / MENSAJES -->
+    <section id="mensajes" class="seccion-cartas">
+        <h2 class="section-title-script">Unos Mensajitos para Ti ✉️</h2>
+        <div class="cartas-grid">
+            <div class="carta-box" onclick="this.classList.toggle('open')">
+                <div class="carta-envelope">
+                    <i class="fas fa-envelope icon-sobre"></i>
+                    <p>Click para abrir ✨</p>
+                </div>
+                <div class="carta-content">
+                    <h3>Para mi personita favorita:</h3>
+                    <p>Gracias por cada risa, por cada momento en el que hemos salido y por hacer que todo sea más bonito. ¡Eres increíble! 💓</p>
+                </div>
+            </div>
+
+            <div class="carta-box" onclick="this.classList.toggle('open')">
+                <div class="carta-envelope">
+                    <i class="fas fa-envelope icon-sobre"></i>
+                    <p>Click para abrir 🌟</p>
+                </div>
+                <div class="carta-content">
+                    <h3>Un deseo para ti:</h3>
+                    <p>Que este año nuevo que cumples esté lleno de bendiciones, metas cumplidas y momentos tan felices como los que guardamos aquí. 🎂</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WIDGET FLOTANTE PREMIUM DEL MINI REPRODUCTOR -->
+<div class="music-player-premium">
+    <div class="player-info">
+        <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=150" alt="Cover" class="player-cover">
+        <div class="track-details">
+            <span class="track-name">Just The Way You Are</span>
+            <span class="track-artist">Milky</span>
+        </div>
     </div>
+    <div class="player-controls-container">
+        <div class="player-buttons">
+            <button id="btnPlayPause" class="play-btn">
+                <i class="fas fa-play" id="icon-play"></i>
+            </button>
+        </div>
+        <div class="progress-bar-container" id="progressContainer">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+    </div>
+</div>
 
-    <audio id="audio" loop>
-        <source src="cancion.mp3" type="audio/mpeg">
-    </audio>
-
-    <script src="script.js"></script>
+<!-- AUDIO DE FONDO REAL OCULTO -->
+<audio id="audio" loop preload="auto">
+    <source src="cancion.mp3" type="audio/mpeg">
+    Tu navegador no soporta este elemento de audio.
+</audio>
 </body>
 </html>
