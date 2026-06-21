@@ -654,3 +654,26 @@ body {
         left: 20px;
     }
 }
+/* Ajustes para celulares */
+@media (max-width: 600px) {
+    .grid-cualidades, .cartas-grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .contador-grid-layout {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .collage-flotante {
+        display: none; /* Oculta collages en celulares para ganar espacio */
+    }
+
+    .carrusel-item {
+        width: 100%; /* Ajusta las imágenes al ancho del celular */
+    }
+}
