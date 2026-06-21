@@ -1,15 +1,656 @@
-/* Estilos necesarios para corregir el móvil */
-body { margin: 0; font-family: 'Poppins', sans-serif; background: #0d0c1d; color: white; }
-
-.carrusel-container { overflow: hidden; width: 100%; position: relative; }
-.carrusel-track { display: flex; transition: transform 0.5s ease; }
-.carrusel-item { min-width: 100%; }
-.carrusel-item img { width: 100%; height: 350px; object-fit: cover; }
-
-.music-player-premium {
-    position: fixed; bottom: 20px; left: 5%; width: 90%;
-    background: #222; padding: 15px; border-radius: 10px;
-    z-index: 9999; display: flex; align-items: center; gap: 10px;
+/* ==========================================================================
+   CONFIGURACIÓN GENERAL
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
-#progressContainer { flex-grow: 1; height: 5px; background: #555; cursor: pointer; }
-#progressBar { height: 100%; background: #ff477e; width: 0%; }
+
+body {
+    background-color: #0d0c1d;
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+/* 1. BARRA DE NAVEGACIÓN */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background: rgba(13, 12, 29, 0.4);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.navbar .logo {
+    font-family: 'Caveat', cursive;
+    font-size: 2rem;
+    color: #ffb7d5;
+}
+
+.navbar nav a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 0.95rem;
+    transition: 0.3s;
+}
+
+.navbar nav a:hover {
+    color: #ff7da7;
+}
+
+/* 2. PORTADA HERO PREMIUM */
+.hero-premium {
+    height: 100vh;
+    background: url('https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=1920') no-repeat center center/cover;
+    position: relative;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(13, 12, 29, 0.5), rgba(13, 12, 29, 0.85));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-text-container {
+    max-width: 800px;
+    padding: 20px;
+}
+
+.script-title {
+    font-family: 'Caveat', cursive;
+    font-size: 5.5rem;
+    color: #d9007f;
+    margin-bottom: 5px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.main-subtitle {
+    font-size: 3.5rem;
+    color: #ffb7d5;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.divider-hearts {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.divider-hearts .line {
+    width: 100px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #ffb7d5, transparent);
+}
+
+.divider-hearts i {
+    color: #ff7da7;
+    margin: 0 15px;
+    font-size: 1.2rem;
+}
+
+.hero-phrase {
+    font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.6;
+}
+
+.arrow-down {
+    margin-top: 40px;
+    font-size: 1.8rem;
+    color: #ffb7d5;
+    animation: bounce 2s infinite;
+    cursor: pointer;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+/* 3. SECCIÓN DEL CONTADOR (Diseño Avanzado con Collage Flotante) */
+.contador-container {
+    background-color: #ffdce8;
+    color: #612940;
+    padding: 80px 40px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.contador-grid-layout {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1300px;
+    margin: 0 auto;
+    gap: 30px;
+}
+
+.contador-wrapper {
+    flex: 1;
+    max-width: 600px;
+}
+
+.contador-tag {
+    font-size: 1.2rem;
+    font-style: italic;
+    margin-bottom: 25px;
+    font-weight: 500;
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.time-box {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 15px;
+    min-width: 100px;
+    box-shadow: 0 8px 20px rgba(97, 41, 64, 0.1);
+}
+
+.time-box span {
+    display: block;
+    font-size: 2.8rem;
+    font-weight: 600;
+    color: #ff6097;
+}
+
+.time-box label {
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    font-weight: 600;
+    color: #9c6279;
+}
+
+@media (max-width: 960px) {
+    .contador-grid-layout {
+        flex-direction: column;
+    }
+    .collage-flotante {
+        flex-direction: row !important;
+        gap: 15px !important;
+    }
+}
+
+/* 4. SECCIÓN SOBRE TI (Azul Noche Estrellado) */
+.sobre-ti {
+    background-color: #141329;
+    padding: 80px 50px;
+    text-align: center;
+}
+
+.section-title-script {
+    font-family: 'Caveat', cursive;
+    font-size: 4rem;
+    color: #e15eb3f0;
+    margin-bottom: 50px;
+}
+
+.grid-cualidades {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.cualidad-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 30px 20px;
+    border-radius: 20px;
+    width: 200px;
+    transition: 0.3s ease;
+}
+
+.cualidad-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.icon-pink {
+    color: #ff7da7;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.cualidad-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.cualidad-card p {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.5;
+}
+
+/* ==========================================================================
+   ESTILOS ULTRA ESTÉTICOS PARA LAS FOTOS FLOTANTES (Sección Contador)
+   ========================================================================== */
+.collage-flotante {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+    align-items: center;
+    position: relative;
+    z-index: 5;
+}
+
+.polaroid-mini {
+    background: #ffffff;
+    padding: 12px 12px 28px 12px;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(80, 29, 49, 0.12), 
+                0 5px 15px rgba(0, 0, 0, 0.05);
+    max-width: 190px;
+    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.polaroid-mini img {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+    border-radius: 8px;
+    filter: brightness(0.95) contrast(1.02) saturate(1.05);
+}
+
+.rot-left { transform: rotate(-5deg) translateY(10px); }
+.rot-right { transform: rotate(6deg) translateY(-10px); }
+
+.polaroid-mini:hover {
+    transform: scale(1.1) rotate(0deg) translateY(-5px) !important;
+    z-index: 99;
+    box-shadow: 0 30px 60px rgba(80, 29, 49, 0.22), 
+                0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.polaroid-mini:hover img {
+    filter: brightness(1.05) contrast(1) saturate(1.1);
+}
+
+/* ==========================================================================
+   RECUERDOS (CARRUSEL INTERACTIVO) Y LUCES COLGANTES
+   ========================================================================== */
+.galeria-premium {
+    background-color: #fbf7f9;
+    padding: 80px 40px;
+    text-align: center;
+    position: relative;
+}
+
+.galeria-subtitle {
+    color: #612940;
+    font-size: 1.1rem;
+    margin-top: -30px;
+    margin-bottom: 40px;
+}
+
+.text-dark-section {
+    color: #501d31 !important;
+}
+
+/* --- DETALLE DE LUCES COLGANTES --- */
+.luces-container {
+    width: 100%;
+    position: relative;
+    height: 40px;
+    margin-bottom: 20px;
+}
+
+.wire {
+    text-align: center;
+    width: 100%;
+    height: 2px;
+    background: rgba(0,0,0,0.1);
+}
+
+.luces {
+    position: absolute;
+    width: 100%;
+    top: -10px;
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    padding: 0;
+}
+
+.luces li {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ffb5d2;
+    box-shadow: 0px 2px 15px #ffb5d2;
+    animation: parpadeo 1.5s infinite ease-in-out;
+}
+
+.luces li:nth-child(even) {
+    background: #ff6ca1;
+    box-shadow: 0px 2px 15px #ff6ca1;
+    animation-delay: 0.5s;
+}
+
+@keyframes parpadeo {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; transform: scale(1.1); }
+}
+
+/* --- DISEÑO DEL CARRUSEL --- */
+.carrusel-container {
+    position: relative;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.carrusel-track-container {
+    overflow: hidden;
+    width: 100%;
+    border-radius: 24px;
+    padding: 15px 5px;
+}
+
+.carrusel-track {
+    display: flex;
+    gap: 25px;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    width: max-content;
+}
+
+.carrusel-item {
+    width: 320px;
+    height: 420px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    background: #fff;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    transition: all 0.4s ease;
+}
+
+.carrusel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: sepia(0.04) brightness(0.96);
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.item-desc {
+    position: absolute;
+    bottom: -80px;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(12, 11, 24, 0.85) 0%, rgba(12, 11, 24, 0.4) 70%, transparent 100%);
+    color: #ffffff;
+    padding: 40px 20px 20px;
+    font-size: 0.95rem;
+    text-align: left;
+    box-sizing: border-box;
+    transition: bottom 0.4s ease;
+}
+
+.carrusel-item:hover img {
+    transform: scale(1.05);
+}
+
+.carrusel-item:hover .item-desc {
+    bottom: 0;
+}
+
+.carrusel-btn {
+    background: #ffffff;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ff6ca1;
+    font-size: 1.2rem;
+    transition: 0.3s;
+    z-index: 10;
+    flex-shrink: 0;
+}
+
+.carrusel-btn:hover {
+    background: #ff6ca1;
+    color: #fff;
+    transform: scale(1.1);
+}
+
+/* --- SECCIÓN DE CARTAS DE MENSAJES --- */
+.seccion-cartas {
+    background: #121124;
+    padding: 90px 40px;
+    text-align: center;
+}
+
+.cartas-grid {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.carta-box {
+    width: 300px;
+    height: 200px;
+    background: #ffe6f0;
+    border-radius: 16px;
+    position: relative;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.carta-envelope, .carta-content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.carta-envelope {
+    color: #501d31;
+}
+
+.icon-sobre {
+    font-size: 3rem;
+    color: #ff6ca1;
+    margin-bottom: 10px;
+}
+
+.carta-content {
+    background: #ffffff;
+    color: #333;
+    transform: rotateY(180deg);
+    border: 2px solid #ffe6f0;
+}
+
+.carta-content h3 {
+    font-family: 'Caveat', cursive;
+    font-size: 1.8rem;
+    color: #ff528f;
+    margin-bottom: 8px;
+}
+
+.carta-content p {
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+.carta-box.open {
+    transform: rotateY(180deg);
+}
+
+/* ==========================================================================
+   WIDGET FLOTANTE PREMIUM DEL REPRODUCTOR (MÚSICA EN LA ESQUINA)
+   ========================================================================== */
+.music-player-premium {
+    position: fixed;
+    bottom: 25px;
+    left: 25px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(13, 12, 29, 0.75);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    padding: 12px 18px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+    width: 300px;
+    z-index: 9999;
+    transition: transform 0.3s ease, background-color 0.3s;
+}
+
+.music-player-premium:hover {
+    background: rgba(13, 12, 29, 0.9);
+    transform: translateY(-3px);
+}
+
+.player-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.player-cover {
+    width: 45px;
+    height: 45px;
+    border-radius: 10px;
+    object-fit: cover;
+    border: 1px solid rgba(255, 183, 213, 0.3);
+    animation: pulseCover 2s infinite alternate ease-in-out;
+    animation-play-state: paused;
+}
+
+@keyframes pulseCover {
+    from { transform: scale(1); }
+    to { transform: scale(1.04); box-shadow: 0 0 12px rgba(255, 118, 167, 0.4); }
+}
+
+.track-details {
+    display: flex;
+    flex-direction: column;
+    max-width: 130px;
+    overflow: hidden;
+}
+
+.track-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #ffffff;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.track-artist {
+    font-size: 0.75rem;
+    color: #ffb7d5;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.player-controls-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+}
+
+.player-buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.play-btn {
+    background: #ff7da7;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(255, 118, 167, 0.3);
+}
+
+.play-btn:hover {
+    background: #ff528f;
+    transform: scale(1.1);
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 2px;
+    cursor: pointer;
+    position: relative;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: #ff7da7;
+    border-radius: 2px;
+    transition: width 0.1s linear;
+}
+
+/* Optimización Responsive para Celulares */
+@media (max-width: 480px) {
+    .music-player-premium {
+        width: calc(100% - 40px);
+        bottom: 15px;
+        left: 20px;
+    }
+}
