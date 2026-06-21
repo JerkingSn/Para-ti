@@ -707,3 +707,7 @@ body {
         margin-bottom: 0;
     }
 }
+.carrusel-container {
+    position: relative;
+    z-index: 5;
+}
