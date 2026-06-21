@@ -677,3 +677,33 @@ body {
         width: 100%; /* Ajusta las imágenes al ancho del celular */
     }
 }
+/* Corrección de diseño para celular */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        padding: 10px;
+    }
+    
+    .carrusel-track-container {
+        width: 90vw; /* Ajusta el ancho al 90% de tu pantalla */
+        margin: 0 auto;
+    }
+
+    .carrusel-item {
+        min-width: 100%; /* Una foto a la vez en el celular */
+    }
+
+    .carrusel-btn {
+        z-index: 10; /* Asegura que los botones estén arriba */
+        background: rgba(255, 255, 255, 0.5); /* Botones semitransparentes */
+        padding: 10px;
+    }
+
+    /* Evitar que el reproductor tape la foto */
+    .music-player-premium {
+        position: fixed;
+        bottom: 10px;
+        width: 95%;
+        margin-bottom: 0;
+    }
+}
